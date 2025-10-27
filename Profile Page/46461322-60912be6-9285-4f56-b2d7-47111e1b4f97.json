@@ -1,0 +1,611 @@
+{
+	"info": {
+		"_postman_id": "46461322-60912be6-9285-4f56-b2d7-47111e1b4f97",
+		"name": "Profile Page",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "lead-list-by-reveal-id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c7fdcfb5-fb73-4413-aa54-d277b21166eb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response content type is JSON\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains expected properties\", function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.property('data');\r",
+							"    pm.expect(responseBody.data).to.have.property('guidId');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-02d99e35-25c8-4d39-8eab-a52319fd40d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"guidId\": \"8ADF9AA21AB00D8B3964D79BD0F8DF2E\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/lead-list/lead-list-by-reveal-id",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"lead-list-by-reveal-id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lists-by-guid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2dd99be-c548-4a7d-8edb-28143b160c94",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has Content-Type header\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is in JSON format\", function () {\r",
+							"    pm.expect(pm.response.text()).to.be.a(\"string\");\r",
+							"    pm.expect(JSON.parse(pm.response.text())).to.be.an(\"object\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-1b39155a-c4a8-4a42-b9e6-05a185ab6ae5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"guid\": \"E6D37F18EA0ED901\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/lists-by-guid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"lists-by-guid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account-lists-count-guids",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "78790f5c-3b63-4520-b29e-98be27fa0e0c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct Content-Type header\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-410ce0a3-4262-4034-ae8e-40606f05dd87",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/account-lists-count-guids",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-lists-count-guids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0da902b-ab90-467b-b074-5f869d98e004",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct content-type\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Assuming response structure is known, you can add more tests once response is available\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-ab81ccb7-06f4-42a6-8052-4ee1c3290662",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"compGuid\": \"53A15A01E32C8428\",\r\n        \"dateRange\": \"ALL\",\r\n        \"categoryDisplayId\": 0\r\n    }\r\n}\r\n// {\r\n//   \"data\": {\r\n//     \"compGuid\": \"EF06CFABB9D847E9\",\r\n//     \"categoryIds\": [15]\r\n//   }\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signal-category-by-guid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "280881e7-142f-42be-a550-8c18c533f745",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct content-type\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-7004c07e-0819-479f-a883-fa984d3f05e8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"compGuid\": \"53A15A01E32C8428\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/signal-category-by-guid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signal-category-by-guid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-revealed-guid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "197a6c41-3300-4b19-b861-f6d6a27f62c3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has content-type header\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is valid JSON\", function () {\r",
+							"    pm.expect(() => pm.response.json()).not.to.throw();\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-2ed95a45-60b3-4195-b744-3103dacefdf2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"compGuid\": \"53A15A01E32C8428\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v2/account-list/account-revealed-guid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v2",
+						"account-list",
+						"account-revealed-guid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-to-list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a24d098c-98ce-4174-b2c7-3f8f9c06cb6e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should have Content-Type as application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Assuming the response is JSON, we can check if it has a specific structure\r",
+							"pm.test(\"Response should have a 'success' property\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('success');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should have a 'message' property\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('message');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-21e39b9d-e034-4472-99f4-d0b951c543da",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 6616,\r\n            \"listName\": \"ka\",\r\n            \"conGuids\": [],\r\n            \"contactRevealRequest\": [\r\n                {\r\n                    \"conGuid\": \"21B0DE8D2AB6F87748BCB7118ED43C8A\",\r\n                    \"compGuid\": \"53A15A01E32C8428\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"exportLoading\": false,\r\n    \"revealSource\": \"Contact Profile Page\",\r\n    \"type\": \"NEW\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/lead-list/add-to-list",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"add-to-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-list-save",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1664328f-7576-46ee-8371-5d5023538906",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct content-type header\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Additional test for response body structure\r",
+							"pm.test(\"Response body is an object\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an(\"object\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-0dd14df3-d23a-47a7-900a-d4e6f3e78e20",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 19903,\r\n            \"listName\": \"Tracked Accounts\",\r\n            \"guids\": [\r\n                \"53A15A01E32C8428\"\r\n            ],\r\n            \"type\": \"HANDPICKED\",\r\n            \"isTrack\": false,\r\n            \"defaultTracked\": true\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/account-list-save",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-list-save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-reveal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "014d12ba-01d4-451d-b19b-5209ab3dc554",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct Content-Type header\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Additional tests can be added here once the response structure is known.\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "46461322-138cc36e-1463-4ceb-ba5c-ee463d186321",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"type\": \"EXISTING\",\r\n        \"revealSource\": \"Employee List\",\r\n        \"compGuids\": [\r\n            \"840A8DB9959DDB3C\"\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/account-reveal",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-reveal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
