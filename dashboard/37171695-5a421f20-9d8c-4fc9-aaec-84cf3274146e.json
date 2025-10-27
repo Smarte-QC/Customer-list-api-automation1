@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "37171695-5a421f20-9d8c-4fc9-aaec-84cf3274146e",
+		"name": "Dashboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "contact-revealed",
+			"id": "37171695-01a23039-97ab-4a2d-8206-61c707e4ee4e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/customer-list/v2/reveal/contact-revealed",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v2",
+						"reveal",
+						"contact-revealed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-list-dashboard",
+			"id": "37171695-82a6e493-1c34-440b-81eb-43f922d06e36",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"type\":\"dashboard\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/account-list/account-list-dashboard",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-list-dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bulk-downloads-list",
+			"id": "37171695-9704038c-b7e2-47f6-8ab2-de959ec5ffd2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pagination\": {\r\n        \"pageSize\": 3\r\n    },\r\n    \"type\": \"DASHBOARD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/bulk-downloads-list",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"bulk-downloads-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "contact-reveal-list",
+			"id": "37171695-4e675a99-263e-495d-b86d-a53f33d8c4f2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"REVEALED\",\r\n    \"pagination\": {\r\n        \"pageSize\": 6\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/reveal/contact-reveal-list",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"reveal",
+						"contact-reveal-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "contact-reveal-list",
+			"id": "37171695-5f2ab305-bf6c-4b58-859c-1064edf33828",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"REVEALED\",\r\n    \"pagination\": {\r\n        \"pageSize\": 6\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/reveal/contact-reveal-list",
+					"protocol": "https",
+					"host": [
+						"qc3-apigateway",
+						"smarte",
+						"pro"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"reveal",
+						"contact-reveal-list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
