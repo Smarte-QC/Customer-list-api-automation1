@@ -1,0 +1,1353 @@
+{
+	"info": {
+		"_postman_id": "48515642-b8555d2b-fa49-4598-be22-b18dbd59013a",
+		"name": "S67- Website Visitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Vendors - Input Variations",
+			"item": [
+				{
+					"name": "Get All Vendors - Default",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Response has vendors array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.vendors).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "ce8d566b-8cfb-4df1-ab4e-2b6c2c390aee"
+							}
+						}
+					],
+					"id": "48515642-c95c4691-ea8a-44e5-be8f-19d3ebe86ee4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/website-visitors/getAllVendors",
+							"protocol": "https",
+							"host": [
+								"qc3-apigateway",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"getAllVendors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/sign-in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce8d566b-8cfb-4df1-ab4e-2b6c2c390aee",
+								"exec": [
+									"pm.test(\"Status code 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Response has vendors array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.vendors).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-8be6da37-2136-492f-a136-1967709e482c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"userName\": \"arun.singh@smarte.pro\",\n        \"password\": \"Admin@123456\"\n    },\n    \"type\": \"SMARTE\"\n}\n//a",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/authentication/v1/auth/sign-in",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"authentication",
+								"v1",
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Vendors - With Pagination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ca7a29b1-0f01-4540-ac6a-4b18f3f2d369",
+								"exec": [
+									"pm.test(\"Status code 200 with pagination\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Vendors array present\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.vendors).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-b0171aee-37f2-4402-aa77-b360f158508e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pagination\": {\n    \"page\": 1,\n    \"limit\": 10\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/getAllVendors",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"getAllVendors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Vendors - With Filters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c6cdb173-8fcf-472b-b93f-7eea74963ff9",
+								"exec": [
+									"pm.test(\"Status code 200 with filters\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Filtered response structure\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.vendors).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-f0c1bd2c-a294-4c58-8a96-657159b24612",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filters\": {\n    \"status\": \"active\",\n    \"vendorType\": \"partner\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/getAllVendors",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"getAllVendors"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "48515642-8e3f346c-db19-4c62-b05c-fad9221784e6"
+		},
+		{
+			"name": "Get All Connections - Input Variations",
+			"item": [
+				{
+					"name": "Get All Connections - Empty Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code 200 - empty search\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Response has data property\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "9c8b25fa-13ea-4bfd-94c2-9de836ab7670"
+							}
+						}
+					],
+					"id": "48515642-2ebea840-c043-452a-9cd8-c4c5f6e9ee31",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"searchText\": \"\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/website-visitors/getAllConnections",
+							"protocol": "https",
+							"host": [
+								"qc3-apigateway",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"getAllConnections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Connections - Specific Search Term",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed191292-3417-421d-8f66-353f94fcc274",
+								"exec": [
+									"pm.test(\"Status code 200 - specific search\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Search results validation\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-03771395-85a0-4237-9049-873d761e5be9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"searchText\": \"test\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/getAllConnections",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"getAllConnections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Connections - Search with Special Characters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb2be010-7613-451b-9f98-fa0dd400e170",
+								"exec": [
+									"pm.test(\"Status code 200 - special chars\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Handles special characters\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-b7f98641-bf7d-4412-bed0-398da75ae95d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"searchText\": \"test@123-connection\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/getAllConnections",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"getAllConnections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Connections - Search with Pagination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09b8bc53-03fe-4ca2-a78c-665b16e0a65a",
+								"exec": [
+									"pm.test(\"Status code 200 - search with pagination\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Pagination response\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-fcd400b4-6c5c-4e74-b612-a8864398ce2d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"searchText\": \"active\"\n    },\n    \"pagination\": {\n        \"page\": 1,\n        \"pageSize\": 20\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/getAllConnections",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"getAllConnections"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "48515642-b1a28455-c899-4ce6-8aa4-538d59068979"
+		},
+		{
+			"name": "Add Connection - Input Variations",
+			"item": [
+				{
+					"name": "Add Connection - Single Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93f2e518-b301-42ee-a5a7-7c65e142000a",
+								"exec": [
+									"pm.test(\"Status code 201 - single connection\", function () {",
+									"    pm.expect(pm.response.code).to.eql(201);",
+									"});",
+									"pm.test(\"Response structure valid\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.status).to.have.property('statusCode');",
+									"    pm.expect(response.status.statusCode).to.eql(201);",
+									"});",
+									"pm.collectionVariables.set('connection_id_1', pm.response.json().data[0].id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-f5130b34-e7c1-46fd-baa2-dabfa4b336c3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"connectionName\": \"abc_123\",\n            \"vendorId\": 1,\n            \"webhookUrl\": \"https://qc3-apigateway.smarte.pro/webhooks/visitorsense/04b4f7f7-68a6-4498-9957-cd69f9a32e93\",\n            \"status\": \"active\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-create",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Connection - Multiple Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b253f62-7025-458c-b56b-8cc7b09ecbe9",
+								"exec": [
+									"pm.test(\"Status code 201 - multiple connections\", function () {",
+									"    pm.expect(pm.response.code).to.eql(201);",
+									"});",
+									"pm.test(\"All connections created\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.data).to.be.an('array');",
+									"    pm.expect(response.data.length).to.eql(3);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-a90f7a29-04d7-45c1-b3a7-15a3ba91a237",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"connectionName\": \"Connection_A_\" ,\n            \"vendorId\": 1,\n            \"webhookUrl\": \"https://webhook.a.com/callback\",\n            \"status\": \"inactive\"\n        },\n        {\n            \"connectionName\": \"Connection_B_\",\n            \"vendorId\": 2,\n            \"webhookUrl\": \"https://webhook.b.com/endpoint\",\n            \"status\": \"inactive\"\n        },\n        {\n            \"connectionName\": \"Connection_C_\",\n            \"vendorId\": 3,\n            \"webhookUrl\": \"https://webhook.c.com/listener\",\n            \"status\": \"inactive\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-create",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Connection - Different Status Values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0654188a-d8de-4e09-82c0-3e7cb359016f",
+								"exec": [
+									"pm.test(\"Status code 201 - different statuses\", function () {",
+									"    pm.expect(pm.response.code).to.eql(201);",
+									"});",
+									"pm.test(\"All status variations accepted\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.data.length).to.eql(3);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-24d58aad-8809-46c4-b5fe-5defd07f8d81",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"connectionName\": \"ActiveConn_\" + (new Date()).getTime(),\n            \"vendorId\": 1,\n            \"webhookUrl\": \"https://active.com/callback\",\n            \"status\": \"active\"\n        },\n        {\n            \"connectionName\": \"InactiveConn_\" + (new Date()).getTime(),\n            \"vendorId\": 2,\n            \"webhookUrl\": \"https://inactive.com/callback\",\n            \"status\": \"inactive\"\n        },\n        {\n            \"connectionName\": \"PendingConn_\" + (new Date()).getTime(),\n            \"vendorId\": 3,\n            \"webhookUrl\": \"https://pending.com/callback\",\n            \"status\": \"pending\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-create",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Connection - Different URL Formats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c7e7e33-4b4e-49a9-9f36-2a448ca18b3c",
+								"exec": [
+									"pm.test(\"Status code 201 - various URL formats\", function () {",
+									"    pm.expect(pm.response.code).to.eql(201);",
+									"});",
+									"pm.test(\"URL format validation\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.data.length).to.eql(4);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-afda9c2d-0116-4667-99e6-058d16e797d5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"connectionName\": \"HTTP_Conn_\" + (new Date()).getTime(),\n            \"vendorId\": 1,\n            \"webhookUrl\": \"http://http-example.com/webhook\",\n            \"status\": \"active\"\n        },\n        {\n            \"connectionName\": \"HTTPS_Conn_\" + (new Date()).getTime(),\n            \"vendorId\": 2,\n            \"webhookUrl\": \"https://https-example.com/webhook\",\n            \"status\": \"active\"\n        },\n        {\n            \"connectionName\": \"Port_Conn_\" + (new Date()).getTime(),\n            \"vendorId\": 3,\n            \"webhookUrl\": \"https://port-example.com:8080/webhook\",\n            \"status\": \"active\"\n        },\n        {\n            \"connectionName\": \"Path_Conn_\" + (new Date()).getTime(),\n            \"vendorId\": 4,\n            \"webhookUrl\": \"https://path-example.com/api/v1/webhook/listener\",\n            \"status\": \"active\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-create",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Connection - Edge Cases",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "175cfb75-e890-41bc-be98-13492970b806",
+								"exec": [
+									"pm.test(\"Edge case handling\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 400, 422]);",
+									"});",
+									"pm.test(\"Appropriate response for edge cases\", function () {",
+									"    const response = pm.response.json();",
+									"    if (pm.response.code === 201) {",
+									"        pm.expect(response.data).to.be.an('array');",
+									"    } else {",
+									"        pm.expect(response).to.have.property('error');",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-99aa8003-6091-430c-8232-6565c1934473",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"connectionName\": \"VeryLongName_\" + \"x\".repeat(100),\n            \"vendorId\": 1,\n            \"webhookUrl\": \"https://edge-case.com/webhook\",\n            \"status\": \"active\"\n        },\n        {\n            \"connectionName\": \"Minimal\",\n            \"vendorId\": 999999,\n            \"webhookUrl\": \"https://minimal.com/\",\n            \"status\": \"active\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-create",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "48515642-95ecbb18-aa93-40a5-ab07-65fd22185b1b"
+		},
+		{
+			"name": "Enable/Disable Connection - Input Variations",
+			"item": [
+				{
+					"name": "Enable Connection - Single",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "90217774-fd09-4869-9b00-c3f61e88b813",
+								"exec": [
+									"pm.test(\"Status code 200 - enable single\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Enable operation success\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.status.message.toLowerCase()).to.include('success');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-020474ad-5c06-43cf-a1ec-9ff8b04103a8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\":[\n        {\n            \"id\": {{Connection_C_}},\n            \"status\": \"active\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-enable-disable",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-enable-disable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Connection - Single",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ee7ae62-c857-4c2a-a635-0b78b4ac17ac",
+								"exec": [
+									"pm.test(\"Status code 200 - disable single\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Disable operation success\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.status.message.toLowerCase()).to.include('success');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-d31ffb10-c575-49d1-9cb5-616c37452f2a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\":[\n        {\n            \"id\": 11,\n            \"status\": \"inactive\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-enable-disable",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-enable-disable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mixed Status Update - Multiple",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d7ab2b1-f5a6-48eb-b077-5d26829b6d21",
+								"exec": [
+									"pm.test(\"Status code 200 - mixed updates\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"pm.test(\"Batch update success\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.data.length).to.eql(3);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-e4b6147e-b603-4c53-960c-0ba8a206317e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\":[\n        {\n            \"id\": 11,\n            \"status\": \"active\"\n        },\n        {\n            \"id\": 12,\n            \"status\": \"active\"\n        },\n        {\n            \"id\": 13,\n            \"status\": \"active\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-enable-disable",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-enable-disable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Status Value",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07197229-3dac-4630-a223-8eba8e3976ef",
+								"exec": [
+									"pm.test(\"Invalid status handled properly\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+									"});",
+									"pm.test(\"Error response structure\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.have.property('error');",
+									"    pm.expect(response.error).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-e5659855-e124-49ff-95a2-c385f8e916e7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\":[\n        {\n            \"id\": 12,\n            \"status\": \"invalid_status_value\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-enable-disable",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-enable-disable"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "48515642-4e13d0f4-dbd6-47ee-ba75-24120ce3bf86"
+		},
+		{
+			"name": "Error Scenarios - Invalid Inputs",
+			"item": [
+				{
+					"name": "Add Connection - Missing Required Fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Missing fields returns error\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+									"});",
+									"pm.test(\"Error message indicates missing fields\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.message.toLowerCase()).to.include('required').or.include('missing');",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "2d56f9d0-ad8a-407d-9328-4637cf09cf3e"
+							}
+						}
+					],
+					"id": "48515642-05326e4d-2241-42d5-a088-e602de12be93",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"connectionName\": \"TestConnection\"\n            // Missing vendorId, webhookUrl, status\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/website-visitors/connection-create",
+							"protocol": "https",
+							"host": [
+								"qc3-apigateway",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Connection - Invalid URL Format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f37270ec-9381-4faa-978a-fb0cf969260b",
+								"exec": [
+									"pm.test(\"Invalid URL returns error\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+									"});",
+									"pm.test(\"Error message mentions URL\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.message.toLowerCase()).to.include('url').or.include('valid');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-1c3768e2-4d28-4d6b-8be8-d941470aa147",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"connectionName\": \"InvalidURLmaa\",\n            \"vendorId\": 1,\n            \"webhookUrl\": \"not-a-valid-url\",\n            \"status\": \"active\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-create",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Empty Data Array",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6f7bef2-5c9b-484a-bcfd-51620e574cf8",
+								"exec": [
+									"pm.test(\"Empty array handled properly\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([400, 422, 200]);",
+									"});",
+									"pm.test(\"Appropriate empty array response\", function () {",
+									"    const response = pm.response.json();",
+									"    if (pm.response.code === 200) {",
+									"        pm.expect(response.data).to.be.an('array').that.is.empty;",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48515642-c6793b70-fcbb-4e8e-9089-f635a005cca1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/customer-list/v1/website-visitors/connection-create",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"website-visitors",
+								"connection-create"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "48515642-ff320248-794b-460a-8b5f-dd8ae3d18def"
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": "Bearer your_token_here",
+			"type": "string"
+		},
+		{
+			"key": "connection_id_1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "https://qc3-apigateway.smarte.pro",
+			"type": "string"
+		}
+	]
+}
