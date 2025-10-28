@@ -3721,7 +3721,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"data\": {\"filterType\": \"Applied Search\",\"company_info\": {\"globalRevenue\": {\"size_type\": \"CUSTOM_RANGE\",\"custom_range\": [{\"id\": 0,\"name\": \"1M - 2M\",\"min\": -1,\"max\": -2,\"type\": \"INCLUDE\"}]}},\"type\": \"ADVANCED_SEARCH_LEAD\",\"pagination\": {\"page_no\": 1,\"page_size\": 50}}}"
+									"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalRevenue\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"1M - 2M\",\r\n                        \"min\": -1,\r\n                        \"max\": -2,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n        \"pagination\": {\r\n            \"page_no\": 1,\r\n            \"page_size\": 50\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "{{base_Url}}search/v4/advanced-search",
@@ -3748,7 +3748,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\"data\": {\"filterType\": \"Applied Search\",\"company_info\": {\"globalRevenue\": {\"size_type\": \"CUSTOM_RANGE\",\"custom_range\": [{\"id\": 0,\"name\": \"1M - 2M\",\"min\": -1,\"max\": -2,\"type\": \"INCLUDE\"}]}},\"type\": \"ADVANCED_SEARCH_LEAD\",\"pagination\": {\"page_no\": 1,\"page_size\": 50}}}"
+											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalRevenue\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"1M - 2M\",\r\n                        \"min\": -1,\r\n                        \"max\": -2,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n        \"pagination\": {\r\n            \"page_no\": 1,\r\n            \"page_size\": 50\r\n        }\r\n    }\r\n}"
 										},
 										"url": {
 											"raw": "{{base_Url}}search/v4/advanced-search",
