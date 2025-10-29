@@ -1873,7 +1873,7 @@
 											"    pm.expect(response).to.have.property(\"data\").that.is.an(\"array\");\r",
 											"\r",
 											"    response.data.forEach((it, idx) => {\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"pc_comp_guid\");\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"pc_con_guid\");\r",
 											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_name_drv\");\r",
 											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_city_drv\");\r",
 											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_state_drv\");\r",
