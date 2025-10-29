@@ -1564,7 +1564,17 @@
 											"//         pm.expect(item.rc_comp_pri_ind_codes_ln_drv).to.have.property(\"name\").that.is.an(\"array\");\r",
 											"//     });\r",
 											"// });\r",
-											""
+											"\r",
+											"\r",
+											"pm.test(\"Response contains 'data' field and it is empty\", function () {\r",
+											"    const res = pm.response.json();\r",
+											"\r",
+											"    // Ensure 'data' exists\r",
+											"    pm.expect(res).to.have.property(\"data\");\r",
+											"\r",
+											"    // Check that data is an empty array\r",
+											"    pm.expect(res.data, \"'data' should be an empty array\").to.be.an(\"array\").that.is.empty;\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {},
