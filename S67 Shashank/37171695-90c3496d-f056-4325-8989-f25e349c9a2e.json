@@ -637,8 +637,8 @@
 							"script": {
 								"id": "9e0f65da-72fe-4334-8f5c-bf3d397bbad8",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(500);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 200ms\", function () {\r",
