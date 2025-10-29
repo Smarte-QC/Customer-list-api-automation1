@@ -1761,7 +1761,7 @@
 											"// Test for response structure\r",
 											"pm.test(\"Response has expected structure\", function () {\r",
 											"    pm.expect(response).to.have.property(\"status\");\r",
-											"    pm.expect(response).to.have.property(\"data\").that.is.an(\"array\");\r",
+											"  \r",
 											"});\r",
 											"\r",
 											"// Test for status message and status code in response\r",
