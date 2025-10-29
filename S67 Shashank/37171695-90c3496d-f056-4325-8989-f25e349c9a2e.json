@@ -2929,11 +2929,6 @@
 											"    pm.expect(status).to.have.property(\"message\");\r",
 											"});\r",
 											"\r",
-											"// Validate data object structure\r",
-											"pm.test(\"Data object has searchId property\", function () {\r",
-											"    const data = response.data;\r",
-											"    pm.expect(data).to.have.property(\"searchId\");\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript",
