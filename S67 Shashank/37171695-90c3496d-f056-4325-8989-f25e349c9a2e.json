@@ -130,7 +130,15 @@
 									"    pm.expect(response.status).to.have.property('message');\r",
 									"});\r",
 									"\r",
-									""
+									"pm.test(\"Response message is 'No Content'\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.status.message).to.eql(\"No Content\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data should not be present when message is 'No Content'\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res).to.not.have.property(\"data\");\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {},
