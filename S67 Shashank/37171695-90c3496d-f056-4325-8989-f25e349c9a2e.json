@@ -105,6 +105,102 @@
 					"response": []
 				},
 				{
+					"name": "industry- Valid Data -\"value\": \"51\" Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e0f65da-72fe-4334-8f5c-bf3d397bbad8",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response has a valid structure\", function () {\r",
+									"    pm.expect(response).to.have.property('status');\r",
+									"    pm.expect(response).to.have.property('data');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status object contains expected properties\", function () {\r",
+									"    pm.expect(response.status).to.have.property('statusCode');\r",
+									"    pm.expect(response.status).to.have.property('requestId');\r",
+									"    pm.expect(response.status).to.have.property('message');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All non-empty SIC and NAICS codes start with '72'\", function () {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"\r",
+									"    responseJSON.data.forEach(function(industry) {\r",
+									"        // Check all SIC codes\r",
+									"        if (industry.sicCodes.length > 0) {\r",
+									"            pm.expect(\r",
+									"                industry.sicCodes.every(code => code.startsWith('72')),\r",
+									"                `SIC codes should all start with '72' in industry: ${industry.industryName}`\r",
+									"            ).to.be.true;\r",
+									"        }\r",
+									"\r",
+									"        // Check all NAICS codes\r",
+									"        if (industry.naicsCodes.length > 0) {\r",
+									"            pm.expect(\r",
+									"                industry.naicsCodes.every(code => code.startsWith('72')),\r",
+									"                `NAICS codes should all start with '72' in industry: ${industry.industryName}`\r",
+									"            ).to.be.true;\r",
+									"        }\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-2734fa90-2b7b-45ae-88d2-ee14ad0931e5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"value\": \"72\"\r\n    },\r\n    \"pagination\": {\r\n        \"page_size\": 50,\r\n        \"page_no\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_Url}}filter/v1/industry",
+							"host": [
+								"{{base_Url}}filter"
+							],
+							"path": [
+								"v1",
+								"industry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "industry-  Wrong Data -\"value\": \"51*a\"",
 					"event": [
 						{
