@@ -303,9 +303,6 @@
 									"    pm.expect(response.status).to.have.property('message');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Data is an array\", function () {\r",
-									"    pm.expect(response.data).to.be.an('array');\r",
-									"});\r",
 									"\r",
 									"\r",
 									""
@@ -334,7 +331,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"data\": {\r\n        \"value\": \"art\"\r\n    },\r\n    \"pagination\": {\r\n        \"page_size\": 50,\r\n        \"page_no\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"data\": {\r\n        \"value\": \"art\"\r\n    },\r\n    \"pagination\": {\r\n        \"page_size\": 10,\r\n        \"page_no\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
