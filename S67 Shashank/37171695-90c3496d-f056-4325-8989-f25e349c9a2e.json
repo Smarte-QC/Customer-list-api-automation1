@@ -35,6 +35,7 @@
 									"    pm.expect(response.status).to.have.property('statusCode');\r",
 									"    pm.expect(response.status).to.have.property('requestId');\r",
 									"    pm.expect(response.status).to.have.property('message');\r",
+									"    \r",
 									"});\r",
 									"\r",
 									"\r",
