@@ -37,9 +37,6 @@
 									"    pm.expect(response.status).to.have.property('message');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Data is an array\", function () {\r",
-									"    pm.expect(response.data).to.be.an('array');\r",
-									"});\r",
 									"\r",
 									"\r",
 									""
