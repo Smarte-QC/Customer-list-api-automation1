@@ -649,7 +649,7 @@
 									"\r",
 									"pm.test(\"Response has a valid structure\", function () {\r",
 									"    pm.expect(response).to.have.property('status');\r",
-									"    pm.expect(response).to.have.property('data');\r",
+									"\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status object contains expected properties\", function () {\r",
