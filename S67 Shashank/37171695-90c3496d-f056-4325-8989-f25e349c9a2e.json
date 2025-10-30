@@ -3737,184 +3737,6 @@
 					"name": "Advanced Search (Global Revenue Filter)",
 					"item": [
 						{
-							"name": "Advanced Search Lead (Global Revenue Filter) - Valid Request",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "4c408aaa-32a8-40a7-a2ee-c8e7670f1eca",
-										"exec": [
-											"const response = pm.response.json();\r",
-											"\r",
-											"// Test for status code\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.expect(pm.response.code).to.equal(200);\r",
-											"});\r",
-											"\r",
-											"// Test for response time\r",
-											"pm.test(\"Response time is less than 200ms\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-											"});\r",
-											"\r",
-											"// Test for response structure\r",
-											"pm.test(\"Response has expected structure\", function () {\r",
-											"    pm.expect(response).to.have.property(\"status\");\r",
-											"    pm.expect(response).to.have.property(\"data\").that.is.an(\"array\");\r",
-											"});\r",
-											"\r",
-											"// Test for status message and status code in response\r",
-											"pm.test(\"Status message and code are correct\", function () {\r",
-											"    pm.expect(response.status).to.have.property(\"message\", \"Success\");\r",
-											"    pm.expect(response.status).to.have.property(\"statusCode\", 200);\r",
-											"});\r",
-											"\r",
-											"// Iterate over each data item and validate properties\r",
-											"pm.test(\"Data item has expected properties\", function () {\r",
-											"    pm.expect(response).to.have.property(\"data\").that.is.an(\"array\");\r",
-											"\r",
-											"    response.data.forEach((it, idx) => {\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"pc_comp_guid\");\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_name_drv\");\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_city_drv\");\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_state_drv\");\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_country_drv\");\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"account_details\");\r",
-											"\r",
-											"        const ad = it.account_details || {};\r",
-											"        pm.expect(ad, `account_details @ index ${idx}`).to.have.property(\"ln_comp_logo_url\");\r",
-											"        pm.expect(ad, `account_details @ index ${idx}`).to.have.property(\"ln_comp_pub_profile_url\");\r",
-											"\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_emp_range_drv\");\r",
-											"        pm.expect(it.rc_comp_emp_range_drv, `rc_comp_emp_range_drv @ index ${idx}`).to.be.an(\"object\");\r",
-											"\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_global_rev_range\");\r",
-											"        pm.expect(it.rc_comp_global_rev_range, `rc_comp_global_rev_range @ index ${idx}`).to.be.an(\"object\");\r",
-											"\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"ln_comp_url_cleaned_drv\");\r",
-											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_pri_ind_codes_ln_drv\");\r",
-											"    });\r",
-											"});\r",
-											"\r",
-											"\r",
-											"pm.test(\"Validate pc_comp_guid list and structure\", function () {\r",
-											"    const res = pm.response.json();\r",
-											"    const expectedGuids = [\r",
-											"        \"53A15A01E32C8428\",\r",
-											"        \"C9A5EE676D9A37EE\",\r",
-											"        \"0823099513297FAE\",\r",
-											"        \"D7A692EC6B31AA53\",\r",
-											"        \"9FD0EC7FEA16F40F\",\r",
-											"        \"02E02F9CF140DF0D\",\r",
-											"        \"1CDA508D1FD7462D\",\r",
-											"        \"12BCFF3DF31A878C\",\r",
-											"        \"EC6E5DC793125104\",\r",
-											"        \"3C1B9A3F384853BD\"\r",
-											"    ];\r",
-											"\r",
-											"    // Collect GUIDs from response\r",
-											"    const returnedGuids = Array.isArray(res.data) ? res.data.map(i => i.pc_comp_guid) : [];\r",
-											"\r",
-											"    // Assert same length (optional but helpful)\r",
-											"    pm.expect(returnedGuids.length).to.be.at.least(expectedGuids.length);\r",
-											"\r",
-											"    // Ensure each expected GUID exists in the returned list\r",
-											"    expectedGuids.forEach(g => {\r",
-											"        pm.expect(returnedGuids, `Expected GUID ${g} to be present in response`).to.include(g);\r",
-											"    });\r",
-											"\r",
-											"    // Ensure each returned guid is a non-empty uppercase hex-like string\r",
-											"    returnedGuids.forEach(g => {\r",
-											"        pm.expect(g).to.be.a(\"string\");\r",
-											"        pm.expect(g.length).to.be.greaterThan(0);\r",
-											"    });\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"id": "37171695-1a3e2e8a-6e68-4654-8e3b-a6f9bc076890",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{auth_token}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_Url}}search/v4/advanced-search",
-									"host": [
-										"{{base_Url}}search"
-									],
-									"path": [
-										"v4",
-										"advanced-search"
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "37171695-c333441e-0d76-4a8c-a829-5d02447fd7da",
-									"name": "Untitled Response",
-									"originalRequest": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "{{auth_token}}"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_Url}}search/v4/advanced-search",
-											"host": [
-												"{{base_Url}}search"
-											],
-											"path": [
-												"v4",
-												"advanced-search"
-											]
-										}
-									},
-									"code": 200,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\"status\": {\"message\": \"Success\",\"requestId\": \"a229dd9e-3d17-45eb-87dc-f575e26047ef\",\"statusCode\": 200},\"data\": [{\"pc_con_guid\": \"A915882CB913472FCDDDC38B55E8B7A5\",\"ln_con_full_name\": \"Cassandra Martel\",\"rc_work_loc_country\": \"France\",\"ln_con_job_title_en\": \"Auxiliaire de vie/soignant\",\"leads_details\": {\"ln_con_picture_url\": \"https://media.licdn.com/dms/image/v2/D4E03AQGOahCjnQJUiA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1720144710004?e=2147483647&v=beta&t=V8j0lE-shsrphewHCW_UopL5cdpX-vuMJyu-8CxuQKo\",\"ln_con_pub_profile_url\": \"https://www.linkedin.com/in/cassandra-martel-760726317\",\"pc_con_direct_dial_avbl\": 2,\"pc_con_email_avbl\": 2},\"accounts_filter\": {\"pc_comp_guid\": \"8BC73B7084EE4EE0\",\"rc_comp_name_drv\": \"ENFIDESIA\",\"account_details\": {\"ln_comp_logo_url\": \"https://static.licdn.com/aero-v1/sc/h/cs8pjfgyw96g44ln9r7tct85f\",\"ln_comp_pub_profile_url\": \"https://www.linkedin.com/company/enfidesia\"}}}]}"
-								}
-							]
-						},
-						{
 							"name": "Advanced Search Lead (Global Revenue Filter) - Valid Request Copy",
 							"event": [
 								{
@@ -4051,6 +3873,184 @@
 							"response": [
 								{
 									"id": "37171695-8a0c8018-b91b-4805-bb56-ad9d58c2fad4",
+									"name": "Untitled Response",
+									"originalRequest": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{auth_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_Url}}search/v4/advanced-search",
+											"host": [
+												"{{base_Url}}search"
+											],
+											"path": [
+												"v4",
+												"advanced-search"
+											]
+										}
+									},
+									"code": 200,
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\"status\": {\"message\": \"Success\",\"requestId\": \"a229dd9e-3d17-45eb-87dc-f575e26047ef\",\"statusCode\": 200},\"data\": [{\"pc_con_guid\": \"A915882CB913472FCDDDC38B55E8B7A5\",\"ln_con_full_name\": \"Cassandra Martel\",\"rc_work_loc_country\": \"France\",\"ln_con_job_title_en\": \"Auxiliaire de vie/soignant\",\"leads_details\": {\"ln_con_picture_url\": \"https://media.licdn.com/dms/image/v2/D4E03AQGOahCjnQJUiA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1720144710004?e=2147483647&v=beta&t=V8j0lE-shsrphewHCW_UopL5cdpX-vuMJyu-8CxuQKo\",\"ln_con_pub_profile_url\": \"https://www.linkedin.com/in/cassandra-martel-760726317\",\"pc_con_direct_dial_avbl\": 2,\"pc_con_email_avbl\": 2},\"accounts_filter\": {\"pc_comp_guid\": \"8BC73B7084EE4EE0\",\"rc_comp_name_drv\": \"ENFIDESIA\",\"account_details\": {\"ln_comp_logo_url\": \"https://static.licdn.com/aero-v1/sc/h/cs8pjfgyw96g44ln9r7tct85f\",\"ln_comp_pub_profile_url\": \"https://www.linkedin.com/company/enfidesia\"}}}]}"
+								}
+							]
+						},
+						{
+							"name": "Advanced Search Lead (Global Revenue Filter) - Valid Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4c408aaa-32a8-40a7-a2ee-c8e7670f1eca",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"// Test for status code\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});\r",
+											"\r",
+											"// Test for response time\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"// Test for response structure\r",
+											"pm.test(\"Response has expected structure\", function () {\r",
+											"    pm.expect(response).to.have.property(\"status\");\r",
+											"    pm.expect(response).to.have.property(\"data\").that.is.an(\"array\");\r",
+											"});\r",
+											"\r",
+											"// Test for status message and status code in response\r",
+											"pm.test(\"Status message and code are correct\", function () {\r",
+											"    pm.expect(response.status).to.have.property(\"message\", \"Success\");\r",
+											"    pm.expect(response.status).to.have.property(\"statusCode\", 200);\r",
+											"});\r",
+											"\r",
+											"// Iterate over each data item and validate properties\r",
+											"pm.test(\"Data item has expected properties\", function () {\r",
+											"    pm.expect(response).to.have.property(\"data\").that.is.an(\"array\");\r",
+											"\r",
+											"    response.data.forEach((it, idx) => {\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"pc_comp_guid\");\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_name_drv\");\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_city_drv\");\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_state_drv\");\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_country_drv\");\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"account_details\");\r",
+											"\r",
+											"        const ad = it.account_details || {};\r",
+											"        pm.expect(ad, `account_details @ index ${idx}`).to.have.property(\"ln_comp_logo_url\");\r",
+											"        pm.expect(ad, `account_details @ index ${idx}`).to.have.property(\"ln_comp_pub_profile_url\");\r",
+											"\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_emp_range_drv\");\r",
+											"        pm.expect(it.rc_comp_emp_range_drv, `rc_comp_emp_range_drv @ index ${idx}`).to.be.an(\"object\");\r",
+											"\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_global_rev_range\");\r",
+											"        pm.expect(it.rc_comp_global_rev_range, `rc_comp_global_rev_range @ index ${idx}`).to.be.an(\"object\");\r",
+											"\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"ln_comp_url_cleaned_drv\");\r",
+											"        pm.expect(it, `item @ index ${idx}`).to.have.property(\"rc_comp_pri_ind_codes_ln_drv\");\r",
+											"    });\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validate pc_comp_guid list and structure\", function () {\r",
+											"    const res = pm.response.json();\r",
+											"    const expectedGuids = [\r",
+											"        \"53A15A01E32C8428\",\r",
+											"        \"C9A5EE676D9A37EE\",\r",
+											"        \"0823099513297FAE\",\r",
+											"        \"D7A692EC6B31AA53\",\r",
+											"        \"9FD0EC7FEA16F40F\",\r",
+											"        \"02E02F9CF140DF0D\",\r",
+											"        \"1CDA508D1FD7462D\",\r",
+											"        \"12BCFF3DF31A878C\",\r",
+											"        \"EC6E5DC793125104\",\r",
+											"        \"3C1B9A3F384853BD\"\r",
+											"    ];\r",
+											"\r",
+											"    // Collect GUIDs from response\r",
+											"    const returnedGuids = Array.isArray(res.data) ? res.data.map(i => i.pc_comp_guid) : [];\r",
+											"\r",
+											"    // Assert same length (optional but helpful)\r",
+											"    pm.expect(returnedGuids.length).to.be.at.least(expectedGuids.length);\r",
+											"\r",
+											"    // Ensure each expected GUID exists in the returned list\r",
+											"    expectedGuids.forEach(g => {\r",
+											"        pm.expect(returnedGuids, `Expected GUID ${g} to be present in response`).to.include(g);\r",
+											"    });\r",
+											"\r",
+											"    // Ensure each returned guid is a non-empty uppercase hex-like string\r",
+											"    returnedGuids.forEach(g => {\r",
+											"        pm.expect(g).to.be.a(\"string\");\r",
+											"        pm.expect(g.length).to.be.greaterThan(0);\r",
+											"    });\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "37171695-1a3e2e8a-6e68-4654-8e3b-a6f9bc076890",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_Url}}search/v4/advanced-search",
+									"host": [
+										"{{base_Url}}search"
+									],
+									"path": [
+										"v4",
+										"advanced-search"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "37171695-c333441e-0d76-4a8c-a829-5d02447fd7da",
 									"name": "Untitled Response",
 									"originalRequest": {
 										"auth": {
