@@ -4153,41 +4153,7 @@
 									]
 								}
 							},
-							"response": [
-								{
-									"id": "37171695-4787f694-6e2e-419b-a332-aa66f2cf2b5b",
-									"name": "Untitled Response",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalRevenue\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"1M - 2M\",\r\n                        \"min\": -1,\r\n                        \"max\": -2,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n        \"pagination\": {\r\n            \"page_no\": 1,\r\n            \"page_size\": 50\r\n        }\r\n    }\r\n}"
-										},
-										"url": {
-											"raw": "{{base_Url}}search/v4/advanced-search",
-											"host": [
-												"{{base_Url}}search"
-											],
-											"path": [
-												"v4",
-												"advanced-search"
-											]
-										}
-									},
-									"code": 400,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\"error\": \"Invalid min or max values\"}"
-								}
-							]
+							"response": []
 						}
 					],
 					"id": "37171695-9010e434-7816-46e3-b465-598105abc997"
