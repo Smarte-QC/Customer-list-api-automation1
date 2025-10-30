@@ -4531,7 +4531,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"data\": {\r\n        \"name\": \"adsdsdsa\",\r\n        \"filterJson\": {\r\n            \"company_info\": {\r\n                \"globalRevenue\": {\r\n                    \"size_type\": \"CUSTOM_RANGE\",\r\n                    \"custom_range\": [\r\n                        {\r\n                            \"id\": 0,\r\n                            \"name\": \"1M - 2M\",\r\n                            \"min\": 1,\r\n                            \"max\": 2,\r\n                            \"type\": \"INCLUDE\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+									"raw": "{\r\n    \"data\": {\r\n        \"name\": \"adsdsds1\",\r\n        \"filterJson\": {\r\n            \"company_info\": {\r\n                \"globalRevenue\": {\r\n                    \"size_type\": \"CUSTOM_RANGE\",\r\n                    \"custom_range\": [\r\n                        {\r\n                            \"id\": 0,\r\n                            \"name\": \"1M - 2M\",\r\n                            \"min\": 1,\r\n                            \"max\": 2,\r\n                            \"type\": \"INCLUDE\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
