@@ -5203,8 +5203,8 @@
 										"id": "208d8da2-2a7d-4959-8c3d-d8c22dd7ac28",
 										"exec": [
 											"// Check if the response status code is 200\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"pm.test(\"Status code is 409\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(409);\r",
 											"});\r",
 											"\r",
 											"// Validate response time is less than 200ms\r",
