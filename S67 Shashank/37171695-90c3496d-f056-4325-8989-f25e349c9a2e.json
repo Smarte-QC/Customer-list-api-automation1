@@ -3482,7 +3482,7 @@
 											"});\r",
 											"\r",
 											"\r",
-											"pm.test(\"Response body has message 'SuccessFully Updated'\", function () {\r",
+											"pm.test(\"Response body has message 'Success'\", function () {\r",
 											"    const res = pm.response.json();\r",
 											"\r",
 											"    // Ensure status object exists\r",
@@ -3490,7 +3490,7 @@
 											"\r",
 											"    // Validate statusCode and message\r",
 											"    pm.expect(res.status.statusCode).to.eql(200);\r",
-											"    pm.expect(res.status.message).to.eql(\"SuccessFully Updated\");\r",
+											"    pm.expect(res.status.message).to.eql(\"Success\");\r",
 											"});\r",
 											""
 										],
