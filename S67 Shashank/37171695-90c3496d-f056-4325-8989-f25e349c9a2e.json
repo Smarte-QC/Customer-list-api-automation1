@@ -3786,7 +3786,7 @@
 											"    ];\r",
 											"\r",
 											"    // Collect GUIDs from response\r",
-											"    const returnedGuids = Array.isArray(res.data) ? res.data.map(i => i.pc_con_guid) : [];\r",
+											"    const returnedGuids = Array.isArray(res.data) ? res.data.map(i => i.pc_comp_guid) : [];\r",
 											"\r",
 											"    // Assert same length (optional but helpful)\r",
 											"    pm.expect(returnedGuids.length).to.be.at.least(expectedGuids.length);\r",
