@@ -3835,49 +3835,7 @@
 									]
 								}
 							},
-							"response": [
-								{
-									"id": "37171695-8a0c8018-b91b-4805-bb56-ad9d58c2fad4",
-									"name": "Untitled Response",
-									"originalRequest": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "{{auth_token}}"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_ACCOUNT\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_Url}}search/v4/advanced-search",
-											"host": [
-												"{{base_Url}}search"
-											],
-											"path": [
-												"v4",
-												"advanced-search"
-											]
-										}
-									},
-									"code": 200,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\"status\": {\"message\": \"Success\",\"requestId\": \"a229dd9e-3d17-45eb-87dc-f575e26047ef\",\"statusCode\": 200},\"data\": [{\"pc_con_guid\": \"A915882CB913472FCDDDC38B55E8B7A5\",\"ln_con_full_name\": \"Cassandra Martel\",\"rc_work_loc_country\": \"France\",\"ln_con_job_title_en\": \"Auxiliaire de vie/soignant\",\"leads_details\": {\"ln_con_picture_url\": \"https://media.licdn.com/dms/image/v2/D4E03AQGOahCjnQJUiA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1720144710004?e=2147483647&v=beta&t=V8j0lE-shsrphewHCW_UopL5cdpX-vuMJyu-8CxuQKo\",\"ln_con_pub_profile_url\": \"https://www.linkedin.com/in/cassandra-martel-760726317\",\"pc_con_direct_dial_avbl\": 2,\"pc_con_email_avbl\": 2},\"accounts_filter\": {\"pc_comp_guid\": \"8BC73B7084EE4EE0\",\"rc_comp_name_drv\": \"ENFIDESIA\",\"account_details\": {\"ln_comp_logo_url\": \"https://static.licdn.com/aero-v1/sc/h/cs8pjfgyw96g44ln9r7tct85f\",\"ln_comp_pub_profile_url\": \"https://www.linkedin.com/company/enfidesia\"}}}]}"
-								}
-							]
+							"response": []
 						},
 						{
 							"name": "Advanced Search Lead (Global Revenue Filter) - Valid Request",
