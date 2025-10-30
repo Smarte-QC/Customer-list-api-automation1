@@ -4142,6 +4142,41 @@
 						},
 						{
 							"name": "Advanced Search (Global Revenue Filter) - Invalid Min/Max Values",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "20cc5078-3c8d-48ff-9d4c-315541b93a4c",
+										"exec": [
+											"pm.test(\"Response status code is 401\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"// Test for status message and status code in response\r",
+											"pm.test(\"Status message and code are correct\", function () {\r",
+											"    try {\r",
+											"        const body = pm.response.json();\r",
+											"        pm.expect(body).to.be.an('object');\r",
+											"        pm.expect(body).to.have.property('status');\r",
+											"        pm.expect(body.status).to.be.an('object');\r",
+											"        pm.expect(body.status).to.have.property('message', 'Missing authorization header');\r",
+											"        pm.expect(body.status).to.have.property('statusCode', 4011);\r",
+											"    } catch (e) {\r",
+											"        pm.expect.fail(`Could not parse JSON body or structure mismatch: ${e && e.message ? e.message : e}`);\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"id": "37171695-a73f1b57-0cda-42c5-a0fc-29ed3e4995e8",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
