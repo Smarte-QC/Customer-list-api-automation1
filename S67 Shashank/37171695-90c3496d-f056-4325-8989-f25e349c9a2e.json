@@ -3737,7 +3737,7 @@
 					"name": "Advanced Search (Global Revenue Filter)",
 					"item": [
 						{
-							"name": "Advanced Search Lead (Global Revenue Filter) - Valid Request Copy",
+							"name": "Advanced Search Account (Global Revenue Filter) - Valid Request Copy",
 							"event": [
 								{
 									"listen": "test",
