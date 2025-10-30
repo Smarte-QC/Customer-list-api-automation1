@@ -3852,7 +3852,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
+									"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_ACCOUNT\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3887,7 +3887,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
+											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalHeadCount\": {\r\n                \"size_type\": \"CUSTOM_RANGE\",\r\n                \"custom_range\": [\r\n                    {\r\n                        \"id\": 0,\r\n                        \"name\": \"100 to 10,000 \",\r\n                        \"min\": 100,\r\n                        \"max\": 10000,\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_ACCOUNT\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
