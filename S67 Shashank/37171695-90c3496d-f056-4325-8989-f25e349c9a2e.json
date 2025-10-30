@@ -4042,6 +4042,41 @@
 						},
 						{
 							"name": "Advanced Search (Global Revenue Filter) - Missing Custom Range",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "00cd7a4c-1d21-428b-9058-84eff301b105",
+										"exec": [
+											"pm.test(\"Response status code is 401\", function () {",
+											"    pm.expect(pm.response.code).to.equal(401);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"",
+											"// Test for status message and status code in response",
+											"pm.test(\"Status message and code are correct\", function () {",
+											"    try {",
+											"        const body = pm.response.json();",
+											"        pm.expect(body).to.be.an('object');",
+											"        pm.expect(body).to.have.property('status');",
+											"        pm.expect(body.status).to.be.an('object');",
+											"        pm.expect(body.status).to.have.property('message', 'Missing authorization header');",
+											"        pm.expect(body.status).to.have.property('statusCode', 4011);",
+											"    } catch (e) {",
+											"        pm.expect.fail(`Could not parse JSON body or structure mismatch: ${e && e.message ? e.message : e}`);",
+											"    }",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"id": "37171695-67ed0a78-4bbf-4035-bd2a-c3eaa0cc6531",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4056,7 +4091,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalRevenue\": {}\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 50\r\n    }\r\n}"
+									"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalRevenue\": {}\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "{{base_Url}}search/v4/advanced-search",
@@ -4083,7 +4118,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalRevenue\": {}\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 50\r\n    }\r\n}"
+											"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"company_info\": {\r\n            \"globalRevenue\": {}\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 10\r\n    }\r\n}"
 										},
 										"url": {
 											"raw": "{{base_Url}}search/v4/advanced-search",
